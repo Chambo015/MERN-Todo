@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "installFront" :"npm i --prefix ./frontend",
     "start": "concurrently \"npx nodemon ./backend/server.js\" \"npm run dev --prefix ./frontend\"",
     "dev": "npm run dev --prefix ./frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
