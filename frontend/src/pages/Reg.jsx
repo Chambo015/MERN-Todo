@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import '../assets/reg.scss'
 import { registerUser } from "../features/auth/AuthSlice";
 import { useNavigate } from 'react-router-dom';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const validate = {
   name: {

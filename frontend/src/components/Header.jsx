@@ -6,7 +6,7 @@ import { FiLogOut } from "react-icons/fi";
 import { FcTodoList } from "react-icons/fc";
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../features/auth/AuthSlice';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export default function Header() {
   const { user } = useSelector(state => state.auth)

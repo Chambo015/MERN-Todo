@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npx nodemon ./backend/server.js\" \"./frontend vite\"",
-    "dev": "npx vite --prefix /frontend",
+    "start": "concurrently \"npx nodemon ./backend/server.js\" \"npm run dev --prefix ./frontend\"",
+    "dev": "npm run dev --prefix ./frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
