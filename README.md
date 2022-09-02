@@ -1,4 +1,8 @@
 # MERN-Todo
+Установите зависимости
+* `npm install`
+* `npm run installFront`
+
 Запуск одной командой 
 * `npm start`
   
