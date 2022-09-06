@@ -1,37 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import Spinner from '../components/Spinner';
 import { useGetTodosQuery } from '../features/todo/todoApi';
-import { BsCalendarEvent } from 'react-icons/bs';
 import TextInput from '../components/TextInput';
 import TodoItem from '../components/TodoItem';
 
 export default function Todos() {
   const navigate = useNavigate();
   const [loggedUser] = useLocalStorage('user');
-  const { isLoading, data } = useGetTodosQuery();
- 
+
   useEffect(() => {
-    console.log(loggedUser);
-    if (!loggedUser) navigate('/login');
+    if (!(loggedUser !== null && typeof loggedUser === 'object' && loggedUser?.token)) {
+      navigate('/login');
+    }
   }, [loggedUser, navigate]);
 
-  // Временно
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  const { isLoading, data, error } = useGetTodosQuery();
 
-  if (isLoading)
+  if (isLoading) {
     return (
       <div className="d-flex justify-content-center">
         <Spinner />
       </div>
     );
+  }
+   
+
+  if(error) {
+    return <div className="d-flex align-items-center flex-column">
+    <p>Ошибка запроса </p>
+    <h1>404</h1>
+  </div>
+  }
 
   return (
     <div className="list-group w-auto">
-      {data.map(item => (<TodoItem key={item._id} todo={item} />))}
+      {data.map((item) => (
+        <TodoItem key={item._id} todo={item} />
+      ))}
       <TextInput />
     </div>
   );

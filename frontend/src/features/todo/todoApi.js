@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const baseQuery = fetchBaseQuery({
   baseUrl: '/api',
   prepareHeaders: (headers, { getState }) => {
-    const token = getState().auth.user.token;
+    const token = getState().auth.user?.token;
     // Если у нас есть токен, установленный в состоянии, мы должны передавать его.
     if (token) {
       headers.set('Authorization', `Bearer ${token}`);

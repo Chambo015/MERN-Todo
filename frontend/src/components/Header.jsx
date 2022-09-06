@@ -7,6 +7,7 @@ import { FcTodoList } from "react-icons/fc";
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../features/auth/AuthSlice';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { todoApi } from '../features/todo/todoApi';
 
 export default function Header() {
   const { user } = useSelector(state => state.auth)
@@ -17,6 +18,8 @@ export default function Header() {
   const handlerLogout = () => {
     setLoggedUser(null)
     dispatch(logout())
+    // сброс todo кэша
+    dispatch(todoApi.util.resetApiState())
     navigate("/login");
   }
 
